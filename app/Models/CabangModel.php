@@ -9,7 +9,7 @@ class CabangModel extends Model
     protected $table = "cabang";
     protected $useTimestamps = true;
     protected $primarykey = "id";
-    protected $allowedFields = ['nama_cabang', 'nama_pic', 'email', 'password', 'no_telp'];
+    protected $allowedFields = ['nama_cabang', 'nama_pic', 'email', 'password', 'no_telp', 'status'];
 
     public function getCabangOptions()
     {

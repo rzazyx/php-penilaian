@@ -46,6 +46,12 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="gambar" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
+                                </div>
+                            </div>
                         </div>
 
                         <hr class="my-4">

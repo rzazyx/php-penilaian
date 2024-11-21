@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->getDefaultController('LoginController');
 $routes->setDefaultMethod('index');
 $routes->setAutoRoute(true);
-// $routes->get('/', 'Home::user');
+//$routes->get('/', 'Home::index');
 $routes->get('/cabang/index', 'CabangController::index');
 $routes->get('/cabang/index', 'CabangController::simpan');
 $routes->get('/cabang/tambah', 'CabangController::tambah');
@@ -20,14 +20,22 @@ $routes->get('cabang/hapus/(:num)', 'CabangController::hapus/$1');
 $routes->get('cabang/edit', 'CabangController::edit');
 $routes->get('cabang/edit/(:num)', 'CabangController::edit/$1');
 $routes->post('cabang/update/(:num)', 'CabangController::update/$1');
+$routes->get('/cabang/nonaktifkan/(:num)', 'CabangController::nonaktifkan/$1');
+$routes->get('/cabang/aktifkan/(:num)', 'CabangController::aktifkan/$1');
 $routes->get('/vendor/index', 'VendorController::index');
 $routes->get('/vendor/tambah', 'VendorController::tambah');
 $routes->post('/vendor/simpan', 'VendorController::simpan');
+$routes->get('/vendor/nonaktifkan/(:num)', 'VendorController::nonaktifkan/$1');
+$routes->get('/vendor/aktifkan/(:num)', 'VendorController::aktifkan/$1');
+
 $routes->get('vendor/hapus/(:num)', 'VendorController::hapus/$1');
 // $routes->get('/kontrak/index', 'KontrakController::index');
 $routes->group('kontrak', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('index', 'KontrakController::index');
 });
+
+$routes->get('/kontrak/nonaktifkan/(:num)', 'KontrakController::nonaktifkan/$1');
+$routes->get('/kontrak/aktifkan/(:num)', 'KontrakController::aktifkan/$1');
 
 $routes->get('/kontrak/tambah', 'KontrakController::tambah');
 $routes->post('/kontrak/simpan', 'KontrakController::simpan');
@@ -53,11 +61,28 @@ $routes->post('/penilaian/tambahpersonil/(:num)', 'PenilaianController::tambahpe
 $routes->post('/penilaian/tambahkinerja/(:num)', 'PenilaianController::tambahkinerja/$1');
 $routes->post('/penilaian/tambahmanajemen/(:num)', 'PenilaianController::tambahmanajemen/$1');
 $routes->post('/penilaian/tambahmaterial/(:num)', 'PenilaianController::tambahmaterial/$1');
+$routes->get('penilaian/editmaterial/(:num)', 'PenilaianController::editMaterial/$1');
+$routes->post('penilaian/updatematerial/(:num)', 'PenilaianController::updateMaterial/$1');
+$routes->get('penilaian/editpersonil/(:num)', 'PenilaianController::editpersonil/$1');
+$routes->post('penilaian/updatepersonil/(:num)', 'PenilaianController::updatepersonil/$1');
+$routes->get('penilaian/editkinerja/(:num)', 'PenilaianController::editkinerja/$1');
+$routes->post('penilaian/updatekinerja/(:num)', 'PenilaianController::updatekinerja/$1');
+$routes->get('penilaian/editmitra/(:num)', 'PenilaianController::editmitra/$1');
+$routes->post('penilaian/updatemitra/(:num)', 'PenilaianController::updatemitra/$1');
+$routes->get('penilaian/editdisiplin/(:num)', 'PenilaianController::editdisiplin/$1');
+$routes->post('penilaian/updatedisiplin/(:num)', 'PenilaianController::updatedisiplin/$1');
+$routes->get('penilaian/editfatal/(:num)', 'PenilaianController::editfatal/$1');
+$routes->post('penilaian/updatefatal/(:num)', 'PenilaianController::updatefatal/$1');
+
+
 $routes->post('/penilaian/tambahkedisiplinan/(:num)', 'PenilaianController::tambahkedisiplinan/$1');
 $routes->post('/penilaian/tambahfatal_error/(:num)', 'PenilaianController::tambahfatal_error/$1');
 $routes->get('/penilaian/laporan', 'PenilaianController::laporan');
 $routes->get('penilaian/cetakPDF', 'PenilaianController::cetakPDF', ['as' => 'cetakPDF']);
 $routes->get('penilaian/cetakPDFlaporan', 'PenilaianController::cetakPDFlaporan');
+$routes->get('/penilaian/hapus/(:num)', 'PenilaianController::hapus/$1');
+$routes->get('/penilaian/reset/(:num)', 'PenilaianController::reset/$1');
+$routes->get('/penilaian/cetakpenalty', 'PenilaianController::cetakpenalty');
 $routes->get('kontrak/cetakPDF', 'KontrakController::cetakPDF');
 $routes->post('/kontrak/update/(:num)', 'KontrakController::update/$1');
 $routes->post('/LoginController/login', 'LoginController::login');

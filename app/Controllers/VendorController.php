@@ -234,4 +234,25 @@ class VendorController extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Diperbarui.');
         return redirect()->to('/vendor/index');
     }
+    public function nonaktifkan($id)
+    {
+        // Mengakses model
+        $model = new VendorModel();
+
+        // Ubah status menjadi nonaktif
+        $model->update($id, ['status' => 'nonaktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/vendor/index')->with('pesan', 'Data berhasil dinonaktifkan');
+    }
+    public function aktifkan($id)
+    {
+        $model = new VendorModel();
+
+        // Ubah status menjadi aktif
+        $model->update($id, ['status' => 'aktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/vendor/index')->with('pesan', 'Data berhasil diaktifkan');
+    }
 }

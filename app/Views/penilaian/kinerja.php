@@ -36,7 +36,7 @@
                     <input type="hidden" name="total" id="total" value="">
                     <div class="modal-body">
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Memastikan pengawasan agar petugas Selalu standby di pos jaga ketika bertugas</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Memastikan pengawasan agar petugas Selalu standby</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
                                 <input type="number" class="form-control" id="personil1" name="personil1" value="0">
                             </div>
@@ -45,6 +45,12 @@
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="g_kinerja1" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_kinerja1" name="g_kinerja1">
+                                </div>
                             </div>
                         </div>
 
@@ -59,6 +65,12 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil13" name="personil13" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_kinerja2" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_kinerja2" name="g_kinerja2">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
@@ -72,10 +84,16 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil23" name="personil23" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_kinerja3" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_kinerja3" name="g_kinerja3">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Memastikan seluruh Komplain yang terjadi di kapal mendapatkan initial response terekskalasi sesuai tupoksi.</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Memastikan seluruh Komplain yang terjadi mendapatkan initial response terekskalasi sesuai tupoksi.</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
                                 <input type="number" class="form-control" id="personil31" name="personil31" value="0">
                             </div>
@@ -84,6 +102,12 @@
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil33" name="personil33" value="" readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="g_kinerja4" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_kinerja4" name="g_kinerja4">
+                                </div>
                             </div>
                         </div>
 
@@ -97,6 +121,12 @@
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil43" name="personil43" value="" readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="g_kinerja5" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_kinerja5" name="g_kinerja5">
+                                </div>
                             </div>
                         </div>
 

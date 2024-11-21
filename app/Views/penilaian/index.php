@@ -10,13 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Penilaian</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-        .container {
-            max-width: 1200px;
-            margin-top: 20px;
-        }
-    </style>
+
 </head>
+<style>
+    .container {
+        max-width: 1500px;
+        margin-top: 20px;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -60,6 +61,9 @@
                             <th scope="col">Score Kedisipilnan</th>
                             <th scope="col">Score Fatal Error</th>
                             <th scope="col">Total Nilai</th>
+                            <?php if (session()->user_level == 'admin' || session()->user_level == 'pic') { ?>
+                                <th scope="col">Aksi</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,6 +90,7 @@
                                         <a href="/penilaian/personil/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['personil']; ?>
+                                        <a href="/penilaian/editpersonil/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">Edit</a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -93,6 +98,7 @@
                                         <a href="/penilaian/kinerja/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['kinerja']; ?>
+                                        <a href="/penilaian/editkinerja/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">Edit</a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -100,6 +106,7 @@
                                         <a href="/penilaian/m_mitra/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['m_mitra']; ?>
+                                        <a href="/penilaian/editmitra/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">Edit</a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -107,6 +114,8 @@
                                         <a href="/penilaian/material/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['material']; ?>
+                                        <a href="/penilaian/editmaterial/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">edit</a>
+                                        <!-- <a href="/penilaian/viewmaterial/<?= $penilaian['id']; ?>" class="bbi bi-eye-fill">view</a>-->
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -114,6 +123,7 @@
                                         <a href="/penilaian/kedisiplinan/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['kedisiplinan']; ?>
+                                        <a href="/penilaian/editdisiplin/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">edit</a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -121,13 +131,26 @@
                                         <a href="/penilaian/fatal_error/<?= $penilaian['id']; ?>"><i class="fas fa-edit"></i></a>
                                     <?php else : ?>
                                         <?= $penilaian['fatal_error']; ?>
+                                        <a href="/penilaian/editfatal/<?= $penilaian['id']; ?>" class="bi bi-eye-fill">edit</a>
                                     <?php endif; ?>
                                 </td>
                                 <td>
                                     <?= $penilaian['personil'] + $penilaian['kinerja'] + $penilaian['m_mitra'] + $penilaian['material'] + $penilaian['kedisiplinan'] + $penilaian['fatal_error']; ?>
                                 </td>
-                                <td>
-
+                                <?php if (session()->user_level == 'admin' || session()->user_level == 'pic') { ?>
+                                    <!--<td>
+                                        <a href="/penilaian/hapus/<?= $penilaian['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">
+                                            <button class="btn btn-danger btn-sm">Hapus</button>
+                                        </a>
+                                    </td>-->
+                                    <td>
+                                        <?php if ($penilaian['personil'] > 0 || $penilaian['kinerja'] > 0 || $penilaian['m_mitra'] > 0 || $penilaian['material'] > 0 || $penilaian['kedisiplinan'] > 0 || $penilaian['fatal_error'] > 0) : ?>
+                                            <a href="/penilaian/reset/<?= $penilaian['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus nilai ini?')">
+                                                <button class="btn btn-warning btn-sm">Penilaian Selanjutnya</button>
+                                            </a>
+                                        <?php endif; ?>
+                                    </td>
+                                <?php } ?>
                             </tr>
 
                         <?php endforeach; ?>

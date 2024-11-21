@@ -46,6 +46,12 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_mitra1" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_mitra1" name="g_mitra1">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
@@ -59,6 +65,12 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil13" name="personil13" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_mitra2" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_mitra2" name="g_mitra2">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
@@ -71,6 +83,12 @@
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil23" name="personil23" value="" readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="g_mitra3" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_mitra3" name="g_mitra3">
+                                </div>
                             </div>
                         </div>
                         <hr class="my-4">

@@ -11,7 +11,7 @@ class PenilaianModel extends Model
 {
     protected $table = 'penilaian';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['no_kontrak', 'jenis_petugas', 'nama_vendor', 'nama_cabang', 'tanggal', 'personil', 'kinerja', 'm_mitra', 'material', 'kedisiplinan', 'fatal_error'];
+    protected $allowedFields = ['no_kontrak', 'jenis_petugas', 'nama_vendor', 'nama_cabang', 'tanggal', 'personil', 'nilai_personil1', 'gambar_personil1', 'nilai_personil2', 'gambar_personil2', 'nilai_personil3', 'gambar_personil3', 'nilai_personil4', 'gambar_personil4', 'nilai_personil5', 'gambar_personil5', 'kinerja', 'kinerja1', 'kinerja2', 'kinerja3', 'kinerja4', 'kinerja5', 'gambar_kinerja1', 'gambar_kinerja2', 'gambar_kinerja3', 'gambar_kinerja4', 'gambar_kinerja5', 'm_mitra', 'mitra1', 'mitra2', 'mitra3', 'gambar_mitra1', 'gambar_mitra2', 'gambar_mitra3', 'material', 'nilai_material', 'gambar_material', 'kedisiplinan', 'disiplin', 'gambar_disiplin', 'fatal_error', 'fatal1', 'fatal2', 'fatal3', 'gambar_fatal1', 'gambar_fatal2', 'gambar_fatal3', 'status'];
 
     public function getPenilaianByKontrak($kontrakId)
     {
@@ -54,5 +54,11 @@ class PenilaianModel extends Model
             ->orLike('MONTHNAME(tanggal)', $searchTerm) // Assuming tanggal is a date column, adjust accordingly
             ->where('id', $vendor)
             ->findAll();
+    }
+    public function getMonthlyPenalties()
+    {
+        // Your logic to fetch monthly penalties from the database or other source
+        // Example: replace this with your actual database query
+        return $this->db->table('monthly_penalties')->get()->getResultArray();
     }
 }

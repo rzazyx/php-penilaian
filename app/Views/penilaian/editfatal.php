@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nilai Personil</title>
+    <title>Nilai Fatal Error</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -17,8 +17,9 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="my-3">Form Nilai Personil</h2>
+                    <h2 class="my-3">Form Nilai Fatal Error</h2>
                 </div>
+                <!--error data-->
                 <?php if (session('validation')) : ?>
                     <div class="alert alert-danger alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -29,105 +30,106 @@
                         </ul>
                     </div>
                 <?php endif ?>
-                <form action="/penilaian/tambahpersonil/<?= $id; ?>" method="post" enctype="multipart/form-data">
+                <!--error data-->
+                <form action="/penilaian/updatefatal/<?= $penilaian['id']; ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="total" id="total" value="">
                     <div class="modal-body">
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Jumlah Personil sesuai RAB dan Kontrak</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Laporan keluhan dari pihak pengguna jasa</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil1" name="personil1" value="0">
+                                <input type="number" class="form-control" id="personil1" name="personil1" value="<?= $penilaian['fatal1']; ?>">
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil2" name="personil2" value="2.50" readonly>
+                                <input type="number" class="form-control" id="personil2" name="personil2" value="7.00" readonly>
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
                             </div>
                             <div class="mb-3 row">
-                                <label for="g_personil1" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <label for="g_fatal1" class="col-sm-3 col-form-label">Gambar Personil 1</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="g_personil1" name="g_personil1">
+                                    <?php if (!empty($penilaian['gambar_fatal1'])) : ?>
+                                        <!-- Tampilkan gambar yang sudah diunggah sebelumnya -->
+                                        <img src="/public/uploads/<?= $penilaian['gambar_fatal1']; ?>" class="img-thumbnail" alt="Gambar Personil 1" width="100">
+                                    <?php else : ?>
+                                        <p>Gambar tidak tersedia</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <!-- Sedikan opsi untuk mengunggah gambar baru -->
+                            <div class="mb-3 row">
+                                <label for="g_fatal1" class="col-sm-3 col-form-label">Unggah Gambar Baru</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_fatal1" name="g_fatal1">
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Komunikasi Petugas yang baik dan sopan,Ramah & beretika kepada pengguna jasa maupun stakeholders</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Laporan keluhan dari pihak user</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil11" name="personil11" value="0">
+                                <input type="number" class="form-control" id="personil11" name="personil11" value="<?= $penilaian['fatal2']; ?>">
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil12" name="personil12" value="2.50" readonly>
+                                <input type="number" class="form-control" id="personil12" name="personil12" value="7.00" readonly>
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil13" name="personil13" value="" readonly>
                             </div>
                             <div class="mb-3 row">
-                                <label for="g_personil2" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <label for="g_fatal2" class="col-sm-3 col-form-label">Gambar Personil 1</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="g_personil2" name="g_personil2">
+                                    <?php if (!empty($penilaian['gambar_fatal2'])) : ?>
+                                        <!-- Tampilkan gambar yang sudah diunggah sebelumnya -->
+                                        <img src="/public/uploads/<?= $penilaian['gambar_fatal2']; ?>" class="img-thumbnail" alt="Gambar Personil 1" width="100">
+                                    <?php else : ?>
+                                        <p>Gambar tidak tersedia</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <!-- Sedikan opsi untuk mengunggah gambar baru -->
+                            <div class="mb-3 row">
+                                <label for="g_fatal2" class="col-sm-3 col-form-label">Unggah Gambar Baru</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_fatal2" name="g_fatal2">
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Penampilan Petugas dan Memakai seragam dan atribut sesuai dengan ketentuan</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Laporan keluhan dari pihak Direksi PT ASDP Indonesia Ferry (Persero)</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil21" name="personil21" value="0">
+                                <input type="number" class="form-control" id="personil21" name="personil21" value="<?= $penilaian['fatal3']; ?>">
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil22" name="personil22" value="2.50" readonly>
+                                <input type="number" class="form-control" id="personil22" name="personil22" value="7.00" readonly>
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil23" name="personil23" value="" readonly>
                             </div>
                             <div class="mb-3 row">
-                                <label for="g_personil3" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <label for="g_fatal3" class="col-sm-3 col-form-label">Gambar Personil 1</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="g_personil3" name="g_personil3">
+                                    <?php if (!empty($penilaian['gambar_fatal3'])) : ?>
+                                        <!-- Tampilkan gambar yang sudah diunggah sebelumnya -->
+                                        <img src="/public/uploads/<?= $penilaian['gambar_fatal3']; ?>" class="img-thumbnail" alt="Gambar Personil 1" width="100">
+                                    <?php else : ?>
+                                        <p>Gambar tidak tersedia</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Spesifikasi Petugas sesuai dalam KAK/TOR</label>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil31" name="personil31" value="0">
-                            </div>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil32" name="personil32" value="2.50" readonly>
-                            </div>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil33" name="personil33" value="" readonly>
-                            </div>
+                            <!-- Sedikan opsi untuk mengunggah gambar baru -->
                             <div class="mb-3 row">
-                                <label for="g_personil4" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <label for="g_fatal3" class="col-sm-3 col-form-label">Unggah Gambar Baru</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="g_personil4" name="g_personil4">
+                                    <input type="file" class="form-control" id="g_fatal3" name="g_fatal3">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Pemahaman Produk (Dibuktikan dengan lembar Test Porduct Knowledge)</label>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil41" name="personil41" value="0">
-                            </div>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil42" name="personil42" value="2.50" readonly>
-                            </div>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil43" name="personil43" value="" readonly>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="g_personil5" class="col-sm-3 col-form-label">Gambar Personil 1</label>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="g_personil5" name="g_personil5">
-                                </div>
-                            </div>
-                        </div>
-
                         <hr class="my-4">
 
                         <div class="mb-3 row">
@@ -167,22 +169,12 @@
     var inputPersonil22 = document.getElementById('personil22');
     var inputPersonil23 = document.getElementById('personil23');
 
-    var inputPersonil31 = document.getElementById('personil31');
-    var inputPersonil32 = document.getElementById('personil32');
-    var inputPersonil33 = document.getElementById('personil33');
-
-    var inputPersonil41 = document.getElementById('personil41');
-    var inputPersonil42 = document.getElementById('personil42');
-    var inputPersonil43 = document.getElementById('personil43');
-
     var inputTotal = document.getElementById('total');
 
     // Menambahkan event listener untuk menghitung hasil perkalian saat nilai diubah
     inputPersonil1.addEventListener('input', updateResult);
     inputPersonil11.addEventListener('input', updateResult1);
     inputPersonil21.addEventListener('input', updateResult2);
-    inputPersonil31.addEventListener('input', updateResult3);
-    inputPersonil41.addEventListener('input', updateResult4);
 
     function updateResult() {
         // Menghitung hasil perkalian
@@ -217,35 +209,12 @@
         updateTotal();
     }
 
-    function updateResult3() {
-        // Menghitung hasil perkalian
-        var result = parseFloat(inputPersonil31.value) * parseFloat(inputPersonil32.value) / 100;
-
-        // Menetapkan hasilnya sebagai nilai pada input ketiga
-        inputPersonil33.value = result;
-
-        // Memanggil fungsi untuk mengupdate total
-        updateTotal();
-    }
-
-    function updateResult4() {
-        // Menghitung hasil perkalian
-        var result = parseFloat(inputPersonil41.value) * parseFloat(inputPersonil42.value) / 100;
-
-        // Menetapkan hasilnya sebagai nilai pada input ketiga
-        inputPersonil43.value = result;
-
-        // Memanggil fungsi untuk mengupdate total
-        updateTotal();
-    }
-
     function updateTotal() {
         // Menghitung total dari semua hasil
         var total = parseFloat(inputPersonil3.value || 0) +
             parseFloat(inputPersonil13.value || 0) +
-            parseFloat(inputPersonil23.value || 0) +
-            parseFloat(inputPersonil33.value || 0) +
-            parseFloat(inputPersonil43.value || 0);
+            parseFloat(inputPersonil23.value || 0);
+
 
         // Menetapkan total sebagai nilai pada input total
         inputTotal.value = total;

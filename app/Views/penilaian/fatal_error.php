@@ -46,6 +46,12 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_fatal1" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_fatal1" name="g_fatal1">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
@@ -59,10 +65,16 @@
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil13" name="personil13" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="g_fatal2" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_fatal2" name="g_fatal2">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Laporan keluhan dari pihak Direksi PT ASDP Indonesia Ferry (Persero)</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Laporan keluhan dari pihak Direksi</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
                                 <input type="number" class="form-control" id="personil21" name="personil21" value="0">
                             </div>
@@ -71,6 +83,12 @@
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil23" name="personil23" value="" readonly>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="g_fatal3" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" id="g_fatal3" name="g_fatal3">
+                                </div>
                             </div>
                         </div>
                         <hr class="my-4">

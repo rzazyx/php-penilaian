@@ -8,7 +8,7 @@ class VendorModel extends Model
 {
     protected $table = 'vendor';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_vendor', 'nama_user', 'email', 'password', 'no_telp'];
+    protected $allowedFields = ['nama_vendor', 'nama_user', 'email', 'password', 'no_telp', 'status', 'status'];
 
     public function getVendorOptions()
     {

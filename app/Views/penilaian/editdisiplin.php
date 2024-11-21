@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nilai Material dan Machine</title>
+    <title>Nilai Kedisiplinan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -17,55 +17,78 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="my-3">Form Nilai Material dan Machine</h2>
+                    <h2 class="my-3">Form Nilai Kedisiplinan</h2>
                 </div>
-
                 <!--error data-->
-                <form action="/penilaian/tambahmaterial/<?= $id; ?>" method="post" enctype="multipart/form-data">
+                <?php if (session('validation')) : ?>
+                    <div class="alert alert-danger alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <ul>
+                            <?php foreach (session('validation')->getErrors() as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endif ?>
+                <!--error data-->
+                <form action="/penilaian/updatedisiplin/<?= $penilaian['id']; ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="total" id="total" value="">
                     <div class="modal-body">
                         <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Ketersediaan Perlengkapan dan Material pendukung pekerjaan petugas</label>
+                            <label for="personil" class="col-sm-3 col-form-label">Laporan Berupa Rekap Absensi Fingerprint harian</label>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 6 -->
-                                <input type="number" class="form-control" id="personil1" name="personil1" value="0">
+                                <input type="number" class="form-control" id="personil1" name="personil1" value="<?= $penilaian['disiplin']; ?>">
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="personil2" name="personil2" value="6.00" readonly>
+                                <input type="number" class="form-control" id="personil2" name="personil2" value="3.00" readonly>
                             </div>
                             <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
                                 <input type="number" class="form-control" id="personil3" name="personil3" value="" readonly>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="gambar" class="col-sm-3 col-form-label">Gambar Personil 1</label>
+                                <div class="col-sm-9">
+                                    <?php if (!empty($penilaian['gambar_disiplin'])) : ?>
+                                        <!-- Tampilkan gambar yang sudah diunggah sebelumnya -->
+                                        <img src="/public/uploads/<?= $penilaian['gambar_disiplin']; ?>" class="img-thumbnail" alt="Gambar Personil 1" width="100">
+                                    <?php else : ?>
+                                        <p>Gambar tidak tersedia</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Sedikan opsi untuk mengunggah gambar baru -->
                         <div class="mb-3 row">
-                            <label for="gambar" class="col-sm-3 col-form-label">Bukti Pelanggaran (jpg/png) </label>
+                            <label for="gambar" class="col-sm-3 col-form-label">Unggah Gambar Baru</label>
                             <div class="col-sm-9">
                                 <input type="file" class="form-control" id="gambar" name="gambar">
                             </div>
                         </div>
-
-                        <hr class="my-4">
-
-                        <div class="mb-3 row">
-                            <label for="personil" class="col-sm-3 col-form-label">Total</label>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
-                                <input type="number" class="form-control" id="totalDisplay" name="total" value="" readonly>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row">
-                            <div class="col-sm-10">
-                                <a href="/penilaian/index" class="btn btn-primary">Back</a>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>
-
                     </div>
-                </form>
+                    <hr class="my-4">
+
+                    <div class="mb-3 row">
+                        <label for="personil" class="col-sm-3 col-form-label">Total</label>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3"> <!-- Mengubah lebar kolom menjadi 3 -->
+                            <input type="number" class="form-control" id="totalDisplay" name="total" value="" readonly>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <div class="col-sm-10">
+                            <a href="/penilaian/index" class="btn btn-primary">Back</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
             </div>
+            </form>
         </div>
+    </div>
     </div>
 </body>
 

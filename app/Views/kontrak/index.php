@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
             margin-top: 20px;
         }
     </style>
@@ -26,7 +26,7 @@
             <div class="card-header bg-primary text-white">
                 Data Kontrak
             </div>
-            <div class="card-body">
+            <div class="card-body container-fluid">
                 <!--lokasi text pencarian-->
                 <form action="/kontrak/index" method="get">
                     <div class="input-group mb-3 col-4">
@@ -65,6 +65,7 @@
                             <th scope="col">Sisa Waktu (hari)</th>
                             <th scope="col">Keterangan</th>
                             <th scope="col">File Kontrak</th>
+                            <th scope="col">Status</th>
                             <?php if (session()->user_level == 'admin') { ?>
                                 <th scope="col">Aksi</th>
                             <?php } ?>
@@ -92,10 +93,18 @@
                                         Tidak Ada File
                                     <?php endif; ?>
                                 </td>
+                                <td><?= $kontrak['status'] == 'aktif' ? 'Aktif' : 'Nonaktif'; ?></td>
+
                                 <?php if (session()->user_level == 'admin') { ?>
                                     <td>
+                                        <?php if ($kontrak['status'] == 'aktif') : ?>
+                                            <!-- Tombol Nonaktif jika status aktif -->
+                                            <a class="btn btn-danger btn-sm" href="/kontrak/nonaktifkan/<?= $kontrak['id']; ?>">Nonaktifkan</a>
+                                        <?php else : ?>
+                                            <!-- Tombol Aktifkan jika status nonaktif -->
+                                            <a class="btn btn-success btn-sm" href="/kontrak/aktifkan/<?= $kontrak['id']; ?>">Aktifkan</a>
+                                        <?php endif; ?>
                                         <a class="btn btn-warning btn-sm" href="/kontrak/edit/<?= $kontrak['id']; ?>">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="/kontrak/hapus/<?= $kontrak['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Delete</a>
                                     </td>
 
                                 <?php } ?>

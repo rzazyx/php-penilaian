@@ -53,6 +53,7 @@
                             <th scope="col">Nama PIC</th>
                             <th scope="col">Email</th>
                             <th scope="col">No.Telp</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -65,9 +66,16 @@
                                 <td><?= $c['nama_pic']; ?></td>
                                 <td><?= $c['email']; ?></td>
                                 <td><?= $c['no_telp']; ?></td>
+                                <td><?= $c['status'] == 'aktif' ? 'Aktif' : 'Nonaktif'; ?></td>
                                 <td>
+                                    <?php if ($c['status'] == 'aktif') : ?>
+                                        <!-- Tombol Nonaktifkan -->
+                                        <a class="btn btn-danger btn-sm" href="/cabang/nonaktifkan/<?= $c['id']; ?>">Nonaktifkan</a>
+                                    <?php else : ?>
+                                        <!-- Tombol Aktifkan -->
+                                        <a class="btn btn-success btn-sm" href="/cabang/aktifkan/<?= $c['id']; ?>">Aktifkan</a>
+                                    <?php endif; ?>
                                     <a class="btn btn-warning btn-sm" href="/cabang/edit/<?= $c['id']; ?>">Edit</a>
-                                    <a class="btn btn-danger btn-sm" href="/cabang/hapus/<?= $c['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

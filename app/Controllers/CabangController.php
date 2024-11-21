@@ -193,4 +193,25 @@ class CabangController extends BaseController
 
         return view('cabang/index', $data);
     }
+    public function nonaktifkan($id)
+    {
+        // Akses model
+        $model = new CabangModel();
+
+        // Ubah status menjadi nonaktif
+        $model->update($id, ['status' => 'nonaktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/cabang/index')->with('pesan', 'Data berhasil dinonaktifkan');
+    }
+    public function aktifkan($id)
+    {
+        $model = new CabangModel();
+
+        // Ubah status menjadi aktif
+        $model->update($id, ['status' => 'aktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/cabang/index')->with('pesan', 'Data berhasil diaktifkan');
+    }
 }

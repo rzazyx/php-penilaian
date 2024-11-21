@@ -76,7 +76,11 @@
 
                 <!-- Summary of Monthly Penalties -->
                 <!-- Display Monthly Penalties -->
+                <!-- Tombol Cetak PDF 
                 <h3 style="margin-top: 40px;"> Summary of Monthly Penalties</h3>
+                <div class="d-flex justify-content mt-3">
+                    <a href="<?= base_url('penilaian/cetakpenalty'); ?>" class="btn btn-primary">Cetak PDF</a>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -119,3 +123,4 @@
                     }
                 }
                 ?>
+                -->

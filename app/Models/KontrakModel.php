@@ -9,18 +9,18 @@ class KontrakModel extends Model
     protected $table      = 'kontrak';
     protected $primaryKey = 'id';
     protected $pagerSection = 'group1';
-    protected $allowedFields = ['no_kontrak', 'jenis_petugas', 'nama_vendor', 'nama_cabang', 'awal_kontrak', 'akhir_kontrak', 'sisa_waktu', 'file_kontrak'];
+    protected $allowedFields = ['no_kontrak', 'jenis_petugas', 'nama_vendor', 'nama_cabang', 'awal_kontrak', 'akhir_kontrak', 'sisa_waktu', 'file_kontrak', 'status'];
 
     public function getKontrakData($keyword = null)
     {
-        // Mengambil data kontrak
         // Mengambil data kontrak
         if ($keyword) {
             // Jika ada kata kunci pencarian, filter data berdasarkan nama_vendor dan nama_cabang
             $this->like('nama_vendor', $keyword);
             $this->orLike('nama_cabang', $keyword);
-            $this->orlike('no_kontrak', $keyword);
+            $this->orLike('no_kontrak', $keyword);
         }
+
         $kontrakData = $this->findAll();
 
         // Menghitung sisa kontrak dan menetapkan keterangan
@@ -37,8 +37,14 @@ class KontrakModel extends Model
             }
         }
 
+        // Mengurutkan data berdasarkan sisa waktu terbanyak ke sedikit
+        usort($kontrakData, function ($a, $b) {
+            return $b['sisa_waktu'] - $a['sisa_waktu'];
+        });
+
         return $kontrakData;
     }
+
 
     public function deleteKontrak($id)
     {

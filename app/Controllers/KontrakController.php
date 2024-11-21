@@ -251,10 +251,14 @@ class KontrakController extends BaseController
     {
         $kontrak = $this->kontrakModel->getKontrakData();
 
+        $logoPath = base_url('img/logo.png');
+
         $data = [
             'title' => 'Cetak Data Kontrak',
             'kontrak' => $kontrak,
+            'logoPath' => $logoPath, // Menambahkan path logo ke data yang akan dikirim ke view
         ];
+
 
         // Load the Dompdf library
         $options = new Options();
@@ -262,9 +266,22 @@ class KontrakController extends BaseController
         $options->set('isPhpEnabled', true);
         $dompdf = new Dompdf($options);
 
+
         // Load the view content
         $html = view('kontrak/cetak_pdf', $data);
 
+        $dir = __DIR__;
+
+        $html = str_replace(
+            [
+                "{{ dir }}"
+            ],
+            [
+
+                isset($dir) ? $dir : "",
+            ],
+            $html
+        );
         // Load HTML into Dompdf
         $dompdf->loadHtml($html);
 
@@ -277,5 +294,26 @@ class KontrakController extends BaseController
         // Output PDF to browser
         $dompdf->stream('DaftarKontrak.pdf');
         return;
+    }
+    public function nonaktifkan($id)
+    {
+        // Mengakses model
+        $model = new KontrakModel();
+
+        // Ubah status menjadi nonaktif
+        $model->update($id, ['status' => 'nonaktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/kontrak/index')->with('pesan', 'Data berhasil dinonaktifkan');
+    }
+    public function aktifkan($id)
+    {
+        $model = new KontrakModel();
+
+        // Ubah status menjadi aktif
+        $model->update($id, ['status' => 'aktif']);
+
+        // Redirect atau tampilkan pesan sukses
+        return redirect()->to('/kontrak/index')->with('pesan', 'Data berhasil diaktifkan');
     }
 }
